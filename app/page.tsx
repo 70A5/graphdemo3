@@ -1,10 +1,12 @@
 "use client"
 
+import Skeleton from '@/components/skeleton';
 import { BarChart } from '@tremor/react';
 import { LineChart } from '@tremor/react';
 import { DonutChart } from '@tremor/react';
 import { BadgeDelta, Card } from '@tremor/react';
 import { AreaChart } from '@tremor/react';
+import { Suspense } from 'react';
 
 
 const chartdata = [
@@ -194,6 +196,7 @@ export default function LineChartHero() {
       <div className='w-2/3'>
         <div className='grid grid-cols-3 gap-5'>
           <div className='items-center bg-blur-xl bg-white/60 backdrop-blur-md shadow-lg ring-1 ring-black/5 rounded-2xl p-3'>
+          <Suspense fallback={<Skeleton />}>
             <div className=''>
               <LineChart
                 className=''
@@ -207,7 +210,9 @@ export default function LineChartHero() {
                 showAnimation={true}
                 animationDuration={1500}
                 />
+                <Skeleton></Skeleton>
             </div>
+          </Suspense>
           </div>
           <div className='items-center bg-blur-xl bg-white/60 backdrop-blur-md shadow-lg ring-1 ring-black/5 rounded-2xl p-3'>
           <BarChart
